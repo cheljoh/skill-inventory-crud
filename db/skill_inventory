@@ -1,0 +1,12 @@
+---
+skills:
+- id: 5
+  title: nice
+  description: poo
+- id: 6
+  title: cool
+  description: hai
+- id: 10
+  title: hi
+  description: neat sup
+total: 10
