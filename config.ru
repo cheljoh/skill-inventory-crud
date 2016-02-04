@@ -1,8 +1,3 @@
-require 'bundler'
-Bundler.require
+require File.expand_path('../config/environment',  __FILE__) #get out of config, go into config folder and require environment
 
-$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/app"))
-
-require 'controllers/skill_inventory_app'
-
-run SkillInventoryApp
+run SkillInventoryApp #has to have a call method that takes envt, rack protocol

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/application.css">
+  <title>Skill Inventory</title>
+</head>
+<body>
+  <h1>My Skills</h1>
+
+<ol id = "skills">
+  
+    <li><h3><a href ="/skills/1">karate</a></h3></li>
+    <button class="btn-default"> <a href="/skills/1/edit">Edit</a></button>
+    <form action="/skills/1" method="POST">
+      <input type="hidden" name="_method" value="delete">
+    <input class="btn-warning" type="submit" value="Delete">
+    </form>
+  
+</ol>
+
+<a href= '/'>Back to home</a>
+
+</body>
+</html>

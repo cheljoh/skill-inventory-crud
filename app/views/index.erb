@@ -1,6 +1,6 @@
 <h1>My Skills</h1>
 
-<ol>
+<ol id = "skills">
   <% @skills.each do |skill| %>
     <li><h3><a href ="/skills/<%= skill.id %>"><%= skill.title %></a></h3></li>
     <button class="btn-default"> <a href="/skills/<%= skill.id %>/edit">Edit</a></button>

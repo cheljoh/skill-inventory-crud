@@ -1,5 +1,5 @@
 require 'yaml/store'
-require_relative 'skill'
+# require_relative 'skill'
 
 class SkillInventory
 
@@ -49,6 +49,13 @@ class SkillInventory
       database["skills"].delete_if do |skill|
         skill["id"] == id
       end
+    end
+  end
+
+  def delete_all #only for testing bc of yaml file
+    database.transaction do
+      database['skills'] = []
+      database['total'] = 0
     end
   end
 

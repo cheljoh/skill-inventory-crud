@@ -1,4 +1,4 @@
-require 'models/skill_inventory'
+# require 'models/skill_inventory'
 
 class SkillInventoryApp < Sinatra::Base
   set :root, File.join(File.dirname(__FILE__), '..')
@@ -43,7 +43,11 @@ class SkillInventoryApp < Sinatra::Base
   end
 
   def skill_inventory
-    database = YAML::Store.new("db/skill_inventory")
+    if ENV["RACK_ENV"] == "test" #if envt set to test, use test db
+      database = YAML::Store.new('db/skill_inventory_test')
+    else
+      database = YAML::Store.new('db/skill_inventory') #how you manipulate yaml file
+    end
     @skill_inventory ||= SkillInventory.new(database) #makes a new instance var if not already there
   end
 
