@@ -5,9 +5,9 @@ class SkillInventoryTest < Minitest::Test
 
   def test_create_skill
     data = {
-          "id" => 1,
-          "title" => "some skill",
-          "description" => "some description"
+          :id => 1,
+          :title => "some skill",
+          :description => "some description"
         }
     skill = Skill.new(data)
     assert_equal 1, skill.id

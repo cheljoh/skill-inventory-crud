@@ -6,11 +6,12 @@ class UserEditsSkillTest< Minitest::Test
 
   def test_user_edits_skill
     data = {
-          id: 1,
           title: "some skill",
           description: "some description"
         }
     skill_inventory.create(data)
+
+    id = skill_inventory.all.last.id
 
     visit '/skills'
 
@@ -19,7 +20,7 @@ class UserEditsSkillTest< Minitest::Test
     end
 
     click_link("Edit")
-    assert_equal '/skills/1/edit', current_path
+    assert_equal "/skills/#{id}/edit", current_path
 
     fill_in('skill[title]', with: "karate")
     fill_in('skill[description]', with: "do it")

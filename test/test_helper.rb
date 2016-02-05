@@ -10,14 +10,29 @@ Capybara.app = SkillInventoryApp #telling capybara what app to use, rack app tha
 
 Capybara.save_and_open_page_path = "tmp/capybara"
 
+DatabaseCleaner[:sequel, {:connection => Sequel.sqlite("db/skill_inventory_test.sqlite3")}].strategy = :truncation
+
+
 module TestHelpers
+
+  def setup
+    DatabaseCleaner.start
+    super
+  end
+
   def teardown
-    skill_inventory.delete_all
+    DatabaseCleaner.clean
     super
   end
 
   def skill_inventory
-    database = YAML::Store.new('db/skill_inventory_test')
+    database = Sequel.sqlite("db/skill_inventory_test.sqlite3")
     @skill_inventory ||= SkillInventory.new(database)
   end
+
 end
+
+# class FeatureTest < Minitest::Test
+#   include Capybara::DSL
+#   include TestHelpers
+# end

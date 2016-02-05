@@ -1,4 +1,3 @@
-# require 'models/skill_inventory'
 
 class SkillInventoryApp < Sinatra::Base
   set :root, File.join(File.dirname(__FILE__), '..')
@@ -43,13 +42,22 @@ class SkillInventoryApp < Sinatra::Base
   end
 
   def skill_inventory
-    if ENV["RACK_ENV"] == "test" #if envt set to test, use test db
-      database = YAML::Store.new('db/skill_inventory_test')
+    if ENV["RACK_ENV"] == "test"
+      database = Sequel.sqlite("db/skill_inventory_test.sqlite3")
     else
-      database = YAML::Store.new('db/skill_inventory') #how you manipulate yaml file
+      database = Sequel.sqlite("db/skill_inventory_development.sqlite3")
     end
-    @skill_inventory ||= SkillInventory.new(database) #makes a new instance var if not already there
+    @skill_inventory ||= SkillInventory.new(database)
   end
+
+  # def skill_inventory
+  #   if ENV["RACK_ENV"] == "test" #if envt set to test, use test db
+  #     database = YAML::Store.new('db/skill_inventory_test')
+  #   else
+  #     database = YAML::Store.new('db/skill_inventory') #how you manipulate yaml file
+  #   end
+  #   @skill_inventory ||= SkillInventory.new(database) #makes a new instance var if not already there
+  # end
 
 end
 
