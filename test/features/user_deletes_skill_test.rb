@@ -1,15 +1,13 @@
 require_relative '../test_helper'
 
-class UserDeletesSkillTest< Minitest::Test
-  include Capybara::DSL
-  include TestHelpers
+class UserDeletesSkillTest < FeatureTest 
 
   def test_user_deletes_skill
     data = {
-          id: 1,
           title: "some skill",
           description: "some description"
         }
+
     skill_inventory.create(data)
 
     visit '/skills'
@@ -23,7 +21,6 @@ class UserDeletesSkillTest< Minitest::Test
     within '#skills' do
       refute page.has_content?("some skill")
     end
-
   end
 
 

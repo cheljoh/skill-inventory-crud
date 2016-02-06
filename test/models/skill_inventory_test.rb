@@ -8,6 +8,7 @@ class SkillInventoryTest < Minitest::Test
            title: "some skill",
            description: "some description"
          }
+
     skill_inventory.create(data)
     assert_equal 'some skill', skill_inventory.all.last.title
     assert_equal 'some description', skill_inventory.all.last.description
@@ -18,6 +19,7 @@ class SkillInventoryTest < Minitest::Test
           title: "some skill",
           description: "some description"
         }
+
     skill_inventory.create(data)
     assert_equal 1, skill_inventory.all.length
   end
@@ -31,6 +33,7 @@ class SkillInventoryTest < Minitest::Test
           title: "jumping",
           description: "a lot"
         }
+
     skill_inventory.create(data1)
     skill_inventory.create(data2)
     id = skill_inventory.all.last.id
@@ -44,15 +47,14 @@ class SkillInventoryTest < Minitest::Test
         }
 
     skill_inventory.create(data1)
-
     id = skill_inventory.all.last.id
-
     assert_equal "some skill", skill_inventory.all.last.title
 
     updated = {
           "title" => "karate",
           "description" => "fun"
         }
+
     skill_inventory.update(updated, id)
     assert_equal "karate", skill_inventory.all.last.title
 
@@ -70,9 +72,7 @@ class SkillInventoryTest < Minitest::Test
 
     skill_inventory.create(data1)
     skill_inventory.create(data2)
-
     id = skill_inventory.all.last.id
-
     assert_equal "jumping", skill_inventory.all.last.title
     skill_inventory.delete(id)
     assert_equal "some skill", skill_inventory.all.last.title

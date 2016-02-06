@@ -1,4 +1,3 @@
-require 'yaml/store'
 
 class SkillInventory
 
@@ -31,13 +30,6 @@ class SkillInventory
 
   def delete(id)
     dataset.where(:id => id).delete
-  end
-
-  def delete_all #only for testing bc of yaml file
-    database.transaction do
-      database['skills'] = []
-      database['total'] = 0
-    end
   end
 
 end

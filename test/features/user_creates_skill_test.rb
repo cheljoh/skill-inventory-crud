@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
-#need to make git ignore for tmp
-
-class UserCreatesSkillTest< Minitest::Test
-  include Capybara::DSL
-  include TestHelpers #teardown db after you test
+class UserCreatesSkillTest < FeatureTest 
 
   def test_does_it_read_page_contents
     visit '/'
@@ -12,7 +8,6 @@ class UserCreatesSkillTest< Minitest::Test
   end
 
   def test_can_user_create_skill
-
     visit '/'
     click_link("New skill")
 
@@ -26,7 +21,6 @@ class UserCreatesSkillTest< Minitest::Test
     within '#skills' do
       assert page.has_content?("karate")
     end
-
   end
 
 end

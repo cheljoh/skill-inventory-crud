@@ -1,14 +1,13 @@
 require_relative '../test_helper'
 
-class UserEditsSkillTest< Minitest::Test
-  include Capybara::DSL
-  include TestHelpers
+class UserEditsSkillTest < FeatureTest 
 
   def test_user_edits_skill
     data = {
           title: "some skill",
           description: "some description"
         }
+
     skill_inventory.create(data)
 
     id = skill_inventory.all.last.id
